@@ -37,3 +37,11 @@
   color: white;
   border:none;
 }
+
+#counterPositive {
+  color: black;
+}
+
+#counterNegative {
+  color:red;
+}
