@@ -3,6 +3,11 @@
   display:flex;
   justify-content: center;
   border: 2px black solid;
+  margin-bottom: 1em;
+}
+
+.tweet-container:hover {
+  box-shadow: 5px 5px #6b80c788;
 }
 
 article img {
@@ -48,8 +53,13 @@ article.tweet footer {
   font-size: initial;
 }
 
-article.tweet footer.buttons {
-  display:flex;
-  flex-direction: row;
-  justify-content: end;
+article.tweet footer div.buttons button {
+  background: none;
+  border: none;
+  padding: 0;
+  color:#4056a1;
+}
+
+article.tweet footer div.buttons button:hover{
+  color: #e2ce15;
 }
