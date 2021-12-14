@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="/styles/new_tweets.css" type="text/css" />
 
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -40,7 +42,7 @@
       </div>
     </nav>
     <!-- header -->
-    <header>
+    <header class="head">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -48,7 +50,7 @@
       <div>
           <h2>Your Name</h2>
       </div>
-  </header>
+    </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
@@ -62,6 +64,26 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <section class="tweet-container">
+        <article class="tweet">
+          <header>
+            <div>
+              <img src="/images/profile-hex.png"> 
+              <p>Rhoda Jacobs</p>
+            </div>
+            <p>@rhodaJacobs</p>
+          </header>
+          <div class= "tweet-content">Tweet Text</div>
+          <footer>
+            <p>10 days ago</p>
+            <div class ="buttons">
+              <button id="flagButton" type="submit"><i class="fas fa-flag"></i></button>
+              <button id="retweetButton" type="submit"><i class="fas fa-retweet"></i></button>
+              <button id="heartLike" type="submit"><i class="fas fa-heart"></i></button>
+            </div>
+          </footer>
+        </article> 
       </section>
     </main>
   </body>
