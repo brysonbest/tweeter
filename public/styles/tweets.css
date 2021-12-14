@@ -1,5 +1,9 @@
+#tweets-container {
+  width:80%;
+}
+
 .tweet-container {
-  width: 80%;
+  width: 100%;
   display:flex;
   justify-content: center;
   border: 2px black solid;
