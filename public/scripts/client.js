@@ -13,7 +13,7 @@ $(document).ready(function() {
     </header>
     <div class= "tweet-content">${tweet['content']['text']}</div>
     <footer>
-      <p>${tweet['created_at']}</p>
+      <p>${timeago.format(tweet['created_at'])}</p>
       <div class ="buttons">
         <button id="flagButton" type="submit"><i class="fas fa-flag"></i></button>
         <button id="retweetButton" type="submit"><i class="fas fa-retweet"></i></button>
@@ -25,52 +25,41 @@ $(document).ready(function() {
     return newTweet;
   }
   
-  //test tweetData
-  const tweetData = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
-
   //loops through an array of tweet objects, creating a new tweet and appending it to the front page
   const renderTweets = function (tweetArray){
-    for(let each of tweetArray) {
-      let $newTweet = createTweetElement(each);
+    for(const each of tweetArray) {
+      const $newTweet = createTweetElement(each);
       $('#tweets-container').append($newTweet);
     }
   };
 
-  renderTweets(tweetData);
+  //loads all tweets in the /tweets location
+  const loadTweets = function() {
+    $.getJSON('/tweets', function(data) {
+      renderTweets(data);
+    });
+  };
+
+  //loads only the latest tweet to the tweet container
+  const loadNewestTweet = function() {
+    $.getJSON('/tweets', function(data) {
+      const $newTweet = createTweetElement(data[(data.length-1)]);
+      $('#tweets-container').append($newTweet);;
+    });
+  }
+
+  $(() => {
+    loadTweets();
+  });
 
   const tweetButton = document.getElementById('tweetForm');
-  console.log(tweetButton);
 
+  //adds a new tweet to the thread when submitted
   tweetButton.addEventListener('submit', function(event) {
     event.preventDefault();
-    //console.log($(this).serialize());
-    //let tweet = this.elements.text;
-    //let tweetText = tweet.value;
     let tweet = $(this).serialize();
-    $.post("/tweets", tweet);
-    console.log($(this).serialize());
+    $.post("/tweets", tweet).then(()=>loadNewestTweet());
+    document.getElementById('tweet-text').value = "";
+
   });
 });
