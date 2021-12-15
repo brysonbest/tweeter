@@ -60,4 +60,17 @@ $(document).ready(function() {
   };
 
   renderTweets(tweetData);
+
+  const tweetButton = document.getElementById('tweetForm');
+  console.log(tweetButton);
+
+  tweetButton.addEventListener('submit', function(event) {
+    event.preventDefault();
+    //console.log($(this).serialize());
+    //let tweet = this.elements.text;
+    //let tweetText = tweet.value;
+    let tweet = $(this).serialize();
+    $.post("/tweets", tweet);
+    console.log($(this).serialize());
+  });
 });
