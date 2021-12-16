@@ -42,5 +42,22 @@ nav button:hover i{
 100% { transform: translateY(0); }
 }
 
+#scrollTop {
+  display:none;
+  background: none;
+  border:none;
+  padding: none;
+  color: red;
+  opacity: .5;
+  font-size: xxx-large;
+  position:fixed;
+  top:13em;
+  right:10px;
+  z-index: 9999;
+}
 
+#scrollTop:hover {
+  transform: scale(1.2);
+  opacity: .95;
+}
 
