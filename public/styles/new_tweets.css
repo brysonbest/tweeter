@@ -3,9 +3,19 @@
   width: 80%;
   left: 10%;
 }
+
+@media screen and (min-width: 1024px){
+  .container {
+    float:left;
+    position:relative;
+    width: 50%;
+    left: 20%;
+  }
+}
+
 .new-tweet {
-  width: inherit;
-  display:none;
+  width: 80%;
+  display:block;
 }
 
 #tweetform {
