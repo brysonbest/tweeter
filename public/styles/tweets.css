@@ -1,5 +1,7 @@
 #tweets-container {
   width:80%;
+  display:flex;
+  flex-direction: column-reverse;
 }
 
 article img {
@@ -32,6 +34,10 @@ article.tweet header div {
   flex-direction: row;
 }
 
+.tweet-content {
+  word-break: break-word;
+}
+
 .tweet {
   width: 90%;
   display:flex;
@@ -57,4 +63,12 @@ article.tweet footer div.buttons button {
 
 article.tweet footer div.buttons button:hover{
   color: #e2ce15;
+}
+#error {
+  background-color: red;
+  font-size: large;
+  width: fit-content;
+  position: absolute;
+  top: 3em;
+  display:none;
 }

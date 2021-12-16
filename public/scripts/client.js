@@ -1,8 +1,15 @@
 //Loads the Tweets
 $(document).ready(function() {
+  //escape function allows text from user to be processed without running user-input scripts
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+  
   //creates a new tweet from an object
-  const createTweetElement = function(tweet) {
-    let newTweet = `
+  const createTweetElement = function(tweet) { 
+    const newTweet = `
     <article class="tweet">
     <header>
       <div>
@@ -11,7 +18,7 @@ $(document).ready(function() {
       </div>
       <p>${tweet['user']['handle']}</p>
     </header>
-    <div class= "tweet-content">${tweet['content']['text']}</div>
+    <div class= "tweet-content">${escape(tweet['content']['text'])}</div>
     <footer>
       <p>${timeago.format(tweet['created_at'])}</p>
       <div class ="buttons">
@@ -52,14 +59,25 @@ $(document).ready(function() {
     loadTweets();
   });
 
-  const tweetButton = document.getElementById('tweetForm');
+  const tweetForm = document.getElementById('tweetForm');
 
   //adds a new tweet to the thread when submitted
-  tweetButton.addEventListener('submit', function(event) {
+  tweetForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    let tweet = $(this).serialize();
-    $.post("/tweets", tweet).then(()=>loadNewestTweet());
-    document.getElementById('tweet-text').value = "";
-
+    const text = document.getElementById('tweet-text').value;
+    $('#error').hide();
+    if(text.length > 140) {
+      $('#error').remove();
+      $('#errorCode').append(`<p id='error'><i class="fa-solid fa-triangle-exclamation"></i>   Tweet Too Long!   <i class="fa-solid fa-triangle-exclamation"></i></p>`);
+      $('#error').slideDown();
+    } else if(text.length === 0) {
+      $('#error').remove();
+      $('#errorCode').append(`<p id='error'><i class="fa-solid fa-triangle-exclamation"></i>   Please enter a tweet!   <i class="fa-solid fa-triangle-exclamation"></i></p>`);
+      $('#error').slideDown();
+    } else {
+      let tweet = $(this).serialize();
+      $.post("/tweets", tweet).then(()=>loadNewestTweet());
+      document.getElementById('tweet-text').value = "";
+    }
   });
 });
