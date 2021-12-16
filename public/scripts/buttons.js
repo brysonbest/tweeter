@@ -2,11 +2,11 @@ $(document).ready(function() {
   const newTweetSlide = document.getElementById('newTweetSlide');
   //button that shows or hides the new-tweet option
   newTweetSlide.addEventListener('click', function(event) {
-    if ($('.new-tweet').is(":hidden")) {
+    if ($('.new-tweet').is(":visible")) {
+      $('.new-tweet').slideUp();
+    } else {
       $('.new-tweet').slideDown();
       document.getElementById('tweet-text').focus();
-    } else {
-      $('.new-tweet').slideUp();
     }
   });
 
