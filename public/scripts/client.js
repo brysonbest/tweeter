@@ -59,6 +59,17 @@ $(document).ready(function() {
     loadTweets();
   });
 
+  const newTweetSlide = document.getElementById('newTweetSlide');
+
+  newTweetSlide.addEventListener('click', function(event) {
+    if($('.new-tweet').is(":hidden")) {
+      $('.new-tweet').slideDown();
+      document.getElementById('tweet-text').focus();
+    } else {
+      $('.new-tweet').slideUp();
+    }
+  })
+
   const tweetForm = document.getElementById('tweetForm');
 
   //adds a new tweet to the thread when submitted

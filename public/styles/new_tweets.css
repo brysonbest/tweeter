@@ -5,12 +5,12 @@
 }
 .new-tweet {
   width: inherit;
+  display:none;
 }
 
 #tweetform {
   display:flex;
   flex-direction:column;
-
 }
 
 #tweet-text {
@@ -22,6 +22,10 @@
   background: transparent;
   resize: none;
   line-height: 80%;
+}
+
+#tweet-text input:focus, textarea:focus, select:focus {
+  outline: none;
 }
 
 #submitTweet{

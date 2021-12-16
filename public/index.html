@@ -39,8 +39,10 @@
     <nav>
       <span class="logo">tweeter</span>
       <div class="navMessage">
-        <span>Write a new tweet</span>
-        <div><i class="fa-solid fa-angles-down"></i></div>
+        <button id="newTweetSlide">
+          <span>Write a new tweet</span>
+          <div><i class="fa-solid fa-angles-down"></i></div>
+      </button>
       </div>
     </nav>
     <!-- header -->
@@ -57,10 +59,10 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <h3>What are you humming about?</h3>
         <div id = "errorCode"></div>
         <form id = "tweetForm" action="/tweets" method="POST">
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <textarea name="text" id="tweet-text"></textarea>
           <div id = "submitTweet">
             <button id="tweetButton" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
