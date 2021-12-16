@@ -76,7 +76,7 @@ $(document).ready(function() {
       $('#error').slideDown();
     } else {
       let tweet = $(this).serialize();
-      $.post("/tweets", tweet).then(()=>loadNewestTweet());
+      $.post("/tweets", tweet).then(()=>loadNewestTweet()).catch(error=>{console.log(error.message);});
       document.getElementById('tweet-text').value = "";
     }
   });
