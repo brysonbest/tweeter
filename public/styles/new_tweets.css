@@ -31,7 +31,8 @@
   padding: 12px 20px 0px 10px;
   background: transparent;
   resize: none;
-  line-height: 80%;
+  line-height: 90%;
+  overflow-y:hidden
 }
 
 #tweet-text input:focus, textarea:focus, select:focus {

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   const newTweetSlide = document.getElementById('newTweetSlide');
   //button that shows or hides the new-tweet option
-  newTweetSlide.addEventListener('click', function(event) {
+  newTweetSlide.addEventListener('click', function() {
     if ($('.new-tweet').is(":visible")) {
       $('.new-tweet').slideUp();
     } else {
@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   const scrollTop = document.getElementById('scrollTop');
   //button that scrolls to the top of the page
-  scrollTop.addEventListener('click', function(event) {
+  scrollTop.addEventListener('click', function() {
     $('.new-tweet').slideDown();
     document.getElementById('tweet-text').focus();
   });

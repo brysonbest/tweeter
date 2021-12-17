@@ -1,5 +1,14 @@
 //Loads the Tweets
 $(document).ready(function() {
+  
+  //allows tweet entry box to expand to fit user content
+  $("#tweet-text").each(function () {
+    this.setAttribute("style", "height:" + (this.scrollHeight) + "px;");
+  }).on("input", function () {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+
   //escape function allows text from user to be processed without running user-input scripts
   const escape = function(str) {
     let div = document.createElement("div");
