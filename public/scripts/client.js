@@ -1,3 +1,4 @@
+import { escape } from './helpers.js';
 //Loads the Tweets
 $(document).ready(function() {
   
@@ -8,37 +9,32 @@ $(document).ready(function() {
     this.style.height = "auto";
     this.style.height = (this.scrollHeight) + "px";
   });
-
-  //escape function allows text from user to be processed without running user-input scripts
-  const escape = function(str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
   
   //creates a new tweet from an object
   const createTweetElement = function(tweet) {
-    const newTweet = `
-    <article class="tweet">
-    <header>
-      <div>
-        <img src="${tweet['user']['avatars']}"> 
-        <p>${tweet['user']['name']}</p>
-      </div>
-      <p>${tweet['user']['handle']}</p>
-    </header>
-    <div class= "tweet-content">${escape(tweet['content']['text'])}</div>
-    <footer>
-      <p>${timeago.format(tweet['created_at'])}</p>
-      <div class ="buttons">
-        <button id="flagButton" type="submit"><i class="fas fa-flag"></i></button>
-        <button id="retweetButton" type="submit"><i class="fas fa-retweet"></i></button>
-        <button id="heartLike" type="submit"><i class="fas fa-heart"></i></button>
-      </div>
-    </footer>
-  </article>
+    const { content, user, created_at } = tweet
+    const { avatars, handle, name } = user;
+
+    return `
+      <article class="tweet">
+        <header>
+          <div>
+            <img src="${avatars}">
+            <p>${name}</p>
+          </div>
+          <p>${handle}</p>
+        </header>
+        <div class= "tweet-content">${escape(content.text)}</div>
+        <footer>
+          <p>${timeago.format(created_at)}</p>
+          <div class ="buttons">
+            <button id="flagButton" type="submit"><i class="fas fa-flag"></i></button>
+            <button id="retweetButton" type="submit"><i class="fas fa-retweet"></i></button>
+            <button id="heartLike" type="submit"><i class="fas fa-heart"></i></button>
+          </div>
+        </footer>
+      </article>
     `;
-    return newTweet;
   };
   
   //loops through an array of tweet objects, creating a new tweet and appending it to the front page
@@ -73,20 +69,29 @@ $(document).ready(function() {
   //adds a new tweet to the thread when submitted
   tweetForm.addEventListener('submit', function(event) {
     event.preventDefault();
+
     const text = document.getElementById('tweet-text').value;
-    $('#error').hide();
+
+    const errorCode = $('#errorCode');
+    const error = $('#error');
+
+    error.hide();
     if (text.length > 140) {
-      $('#error').remove();
-      $('#errorCode').append(`<p id='error'><i class="fa-solid fa-triangle-exclamation"></i>   Tweet Too Long!   <i class="fa-solid fa-triangle-exclamation"></i></p>`);
+      error.remove();
+      errorCode.append(`<p id='error'><i class="fa-solid fa-triangle-exclamation"></i>   Tweet Too Long!   <i class="fa-solid fa-triangle-exclamation"></i></p>`);
       $('#error').slideDown();
-    } else if (text.length === 0) {
-      $('#error').remove();
-      $('#errorCode').append(`<p id='error'><i class="fa-solid fa-triangle-exclamation"></i>   Please enter a tweet!   <i class="fa-solid fa-triangle-exclamation"></i></p>`);
-      $('#error').slideDown();
-    } else {
-      let tweet = $(this).serialize();
-      $.post("/tweets", tweet).then(()=>loadNewestTweet()).catch(error=>{console.log(error.message);});
-      document.getElementById('tweet-text').value = "";
+      return;
     }
+    
+    if (text.length === 0) {
+      error.remove();
+      errorCode.append(`<p id='error'><i class="fa-solid fa-triangle-exclamation"></i>   Please enter a tweet!   <i class="fa-solid fa-triangle-exclamation"></i></p>`);
+      $('#error').slideDown();
+      return;
+    } 
+    
+    let tweet = $(this).serialize();
+    $.post("/tweets", tweet).then(()=>loadNewestTweet()).catch(error=>{console.log(error.message);});
+    document.getElementById('tweet-text').value = "";
   });
 });
