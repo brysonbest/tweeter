@@ -1,5 +1,6 @@
-//Script that updates the character counter for new tweets
 $(document).ready(function() {
+
+  //Updates the character counter for new tweets.
   const tweetText = document.getElementById("tweet-text");
   tweetText.addEventListener("input", function() {
     const text = String($(this).val());

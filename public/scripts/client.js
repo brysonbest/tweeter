@@ -1,4 +1,5 @@
 import { escape } from './helpers.js';
+
 //Loads the Tweets
 $(document).ready(function() {
   
@@ -64,9 +65,8 @@ $(document).ready(function() {
     loadTweets();
   });
 
-  const tweetForm = document.getElementById('tweetForm');
-
   //adds a new tweet to the thread when submitted
+  const tweetForm = document.getElementById('tweetForm');
   tweetForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -93,5 +93,8 @@ $(document).ready(function() {
     let tweet = $(this).serialize();
     $.post("/tweets", tweet).then(()=>loadNewestTweet()).catch(error=>{console.log(error.message);});
     document.getElementById('tweet-text').value = "";
+
+    const counter = this.querySelector('.counter');
+    $(counter).text(140);
   });
 });
