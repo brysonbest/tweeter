@@ -8,8 +8,7 @@ This project demonstrates implementation of HTML, CSS, JS, jQuery and AJAX front
 
 Tweeter is responsive, and provides dynamic desktop and mobile layouts.
  
-<img src="docs/desktop_layout.png" alt="Desktop Layout" width=70%/>
-<img src="docs/mobile_layout.png" alt="Mobile Layout" width=29%/>
+<img src="docs/desktop_layout.png" alt="Desktop Layout" width=70%/> <img src="docs/mobile_layout.png" alt="Mobile Layout" width=29%/>
 
 ### New Tweets
 
