@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  width: 80%;
+  left: 10%;
+  
+  .new-tweet {
+    width: 80%;
+    display:block;
+
+    #tweetform {
+      display:flex;
+      flex-direction:column;
+    }
+
+    #tweet-text {
+      border: none;
+      border-bottom: 2px solid black;
+      width: 100%;
+      padding: 12px 20px 0px 10px;
+      background: transparent;
+      resize: none;
+      line-height: 90%;
+      overflow-y:hidden
+    }
+
+    #tweet-text input:focus, textarea:focus, select:focus {
+      outline: none;
+    }
+
+    #submitTweet{
+      display:flex;
+      flex-direction:row;
+      justify-content: space-between;
+      padding: 10px 5px 10px 0px;
+
+      #tweetButton {
+        background-color: #4056a1;
+        font-family: 'Bungee', sans-serif;
+        color: white;
+        border:none;
+      }
+      
+      #counterPositive {
+        color: black;
+      }
+      
+      #counterNegative {
+        color:red;
+      }
+    } 
+  }
+}
+
+#error {
+  background-color: red;
+  font-size: large;
+  width: fit-content;
+  position: absolute;
+  top: 3em;
+  display:none;
+}
+
+@media screen and (min-width: 1024px){
+  .container {
+    float:left;
+    position:relative;
+    width: 50%;
+    left: 20%;
+  }
+}

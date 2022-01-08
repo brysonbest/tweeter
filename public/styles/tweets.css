@@ -1,75 +1,57 @@
 #tweets-container {
-  width:80%;
-  display:flex;
+  width: 80%;
+  display: flex;
   flex-direction: column-reverse;
 }
-
-article img {
-  height: 70px;
-  width: 70px;
-}
-
-article.tweet {
-  display:flex;
+#tweets-container article {
+  display: flex;
   flex-direction: column;
   width: 100%;
   justify-content: center;
   border: 2px black solid;
-  margin-top: .5em;
-  margin-bottom: .5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   padding: 5px 1em 5px 1em;
 }
-
-.tweet:hover {
-  box-shadow: 5px 5px #6b80c788;
+#tweets-container article img {
+  height: 70px;
+  width: 70px;
 }
-
-article.tweet header {
-  display:flex;
+#tweets-container article header {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
-article.tweet header div {
-  display:flex;
+#tweets-container article header div {
+  display: flex;
   flex-direction: row;
 }
-
-.tweet-content {
+#tweets-container article .tweet-content {
   word-break: break-word;
 }
-
-.tweet {
-  width: 90%;
-  display:flex;
-  flex-direction:row;
-}
-
-article.tweet footer {
+#tweets-container article footer {
   border-top: 2px solid black;
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height:50px;
+  height: 50px;
   font-size: initial;
 }
-
-article.tweet footer div.buttons button {
+#tweets-container article footer .buttons button {
   background: none;
   border: none;
   padding: 0;
-  color:#4056a1;
+  color: #4056a1;
 }
-
-article.tweet footer div.buttons button:hover{
+#tweets-container article footer .buttons button:hover {
   color: #e2ce15;
 }
-#error {
-  background-color: red;
-  font-size: large;
-  width: fit-content;
-  position: absolute;
-  top: 3em;
-  display:none;
+#tweets-container article .tweet {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+#tweets-container article:hover {
+  box-shadow: 5px 5px #6b80c788;
 }

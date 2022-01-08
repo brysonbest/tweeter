@@ -6,15 +6,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position:absolute;
   top: 120px;
+ 
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px){
   .head {
-    float: left;
-    position: relative;
+    float:left;
+    position:relative;
     width: 30%;
     left: 10%;
     top: 240px;

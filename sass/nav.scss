@@ -1,0 +1,65 @@
+nav {
+  height: 120px;
+  width:100%;
+  display: flex;
+  background-color: #4056a1;
+  color: #FFFFFF;
+  padding: 0px 1em;
+  align-items: center;
+  justify-content: space-between;
+  position:fixed;
+  top:0;
+  z-index: 9999;
+
+  .logo {
+    font-family: 'Bungee', sans-serif;
+  }
+  
+  .navMessage {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      background: none;
+      border: none;
+
+      i {
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        transform-origin: top;
+      }
+
+    }
+    button:hover i{
+      animation-name: bounce;
+      animation-timing-function: ease;
+      color:red;
+    }
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(25px); }
+      100% { transform: translateY(0); }
+      }
+  }
+}
+
+#scrollTop {
+  display:none;
+  background: none;
+  border:none;
+  padding: none;
+  color: red;
+  opacity: .5;
+  font-size: xxx-large;
+  position:fixed;
+  top:13em;
+  right:10px;
+  z-index: 9999;
+}
+
+#scrollTop:hover {
+  transform: scale(1.2);
+  opacity: .95;
+}
+

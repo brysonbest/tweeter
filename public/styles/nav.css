@@ -1,63 +1,65 @@
-.logo {
-  font-family: 'Bungee', sans-serif;
-}
-
 nav {
   height: 120px;
-  width:100%;
+  width: 100%;
   display: flex;
   background-color: #4056a1;
   color: #FFFFFF;
   padding: 0px 1em;
   align-items: center;
   justify-content: space-between;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   z-index: 9999;
 }
-
-.navMessage {
-  display:flex;
+nav .logo {
+  font-family: "Bungee", sans-serif;
+}
+nav .navMessage {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-nav button {
+nav .navMessage button {
   background: none;
   border: none;
 }
-nav button i {
+nav .navMessage button i {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   transform-origin: top;
 }
-nav button:hover i{
+nav .navMessage button:hover i {
   animation-name: bounce;
   animation-timing-function: ease;
-  color:red;
+  color: red;
 }
 @keyframes bounce {
-0%   { transform: translateY(0); }
-50%  { transform: translateY(25px); }
-100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 #scrollTop {
-  display:none;
+  display: none;
   background: none;
-  border:none;
+  border: none;
   padding: none;
   color: red;
-  opacity: .5;
+  opacity: 0.5;
   font-size: xxx-large;
-  position:fixed;
-  top:13em;
-  right:10px;
+  position: fixed;
+  top: 13em;
+  right: 10px;
   z-index: 9999;
 }
 
 #scrollTop:hover {
   transform: scale(1.2);
-  opacity: .95;
+  opacity: 0.95;
 }
-
